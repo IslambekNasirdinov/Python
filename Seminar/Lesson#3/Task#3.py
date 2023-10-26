@@ -26,3 +26,58 @@
 
 # k = 'ноутбук'
 # # 12
+
+# k = 'ноутбук'
+# onePoint = ['А, В, Е, И, Н, О, Р, С, Т, A, E, I, O, U, L, N, S, T, R']
+# twoPoint = ['D, G, Д, К, Л, М, П, У']
+# treePoint = ['Б, Г, Ё, Ь, Я, B, C, M, P']
+# fourPoint = ['F, H, V, W, Y, Й, Ы']
+# fivePoint=['K, Ж, З, Х, Ц, Ч']
+# eihtPoint=['J, X, Ш, Э, Ю']
+# tenPoint = ['Q, Z, Ф, Щ, Ъ']
+# k1 = k.upper()
+# scrabl = 0
+# for i in k:
+#     if k1 == onePoint:
+#         scrabl +=1
+#         print(scrabl)
+#       < ------------ С интернета ---------->
+k = 'lizard'
+
+# import re
+# def isCyrillic(text):
+# 	return bool(re.search('[а-яА-Я]', text))
+# points_en = {1:'AEIOULNSTR',
+#     2:'DG',
+#     3:'BCMP',
+#     4:'FHVWY',
+#     5:'K',
+#     8:'JX',
+#     10:'QZ'}
+# points_ru = {1:'АВЕИНОРСТ',
+#     2:'ДКЛМПУ',
+#     3:'БГЁЬЯ',
+#     4:'ЙЫ',
+#     5:'ЖЗХЦЧ',
+#     8:'ШЭЮ',
+#     10:'ФЩЪ'}
+# text = k.upper()
+# if isCyrillic(text):
+# 	print(sum([k for i in text for k, v in points_ru.items() if i in v]))
+# else:
+# 	print(sum([k for i in text for k, v in points_en.items() if i in v]))
+
+#   <-------- Решение ------------>
+points_en = {1: 'AEIOULNSTR', 2: 'DG', 3: 'BCMP', 4: 'FHVWY', 5: 'K', 8: 'JX', 10: 'QZ'}
+points_ru = {1: 'АВЕИНОРСТ', 2: 'ДКЛМПУ', 3: 'БГЁЬЯ', 4: 'ЙЫ', 5: 'ЖЗХЦЧ', 8: 'ШЭЮ', 10: 'ФЩЪ'}
+word = k.upper()  # переводим все буквы в верхний регистр
+count = 0
+for i in word:
+    if i in 'QWERTYUIOPASDFGHJKLZXCVBNM':
+        for j in points_en:
+            if i in points_en[j]:
+                count = count + j
+    else:
+        for j in points_en:
+            if i in points_ru[j]:
+                count = count + j
